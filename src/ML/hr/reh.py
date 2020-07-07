@@ -13,7 +13,17 @@ from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
-
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+  try:
+    # Currently, memory growth needs to be the same across GPUs
+    for gpu in gpus:
+      tf.config.experimental.set_memory_growth(gpu, True)
+    logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+  except RuntimeError as e:
+    # Memory growth must be set before GPUs have been initialized
+    print(e)
 
 batch_size = 50
 epochs = 15
@@ -137,10 +147,10 @@ model = Sequential([
     MaxPooling2D(),
     Conv2D(32, 3, padding='same', activation='relu'),
     MaxPooling2D(),
-    Conv2D(16, 3, padding='same', activation='relu'),
+    Conv2D(64, 3, padding='same', activation='relu'),
     MaxPooling2D(),
     Flatten(),
-    Dense(512, activation='relu'),
+    #Dense(32, activation='relu'),
     Dense(1)
 ])
 

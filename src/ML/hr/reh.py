@@ -150,8 +150,7 @@ model = Sequential([
     Conv2D(64, 3, padding='same', activation='relu'),
     MaxPooling2D(),
     Flatten(),
-    #Dense(32, activation='relu'),
-    Dense(1)
+    Dense(131, activation='relu'),
 ])
 
 model.compile(optimizer='adam',

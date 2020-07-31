@@ -4,7 +4,7 @@
 # autopep8==1.5.0
 # pylint
 
-echo Sortering av .gitignore of requirements.txt er slått av midlertidig
+echo It's cleanin time
 
 ARG1="$1"
 LENGTH=${#ARG1}
